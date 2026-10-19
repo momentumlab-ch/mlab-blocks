@@ -1,0 +1,90 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mlab-blocks/menuekarte",
+	"title": "Menükarte",
+	"category": "mlab-blocks",
+	"icon": "food",
+	"description": "Liste mit Gerichten oder Aufgaben, mit Zwischentiteln.",
+	"textdomain": "mlab-blocks",
+	"attributes": {
+		"items": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object"
+			}
+		},
+		"button_text": {
+			"type": "string",
+			"default": ""
+		},
+		"button_angebot": {
+			"type": "string",
+			"default": ""
+		},
+		"button_link": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": true
+	},
+	"editorScript": "mlab-blocks-editor",
+	"editorStyle": "mlab-blocks-editor",
+	"render": "file:./render.php",
+	"mlab": {
+		"fields": [
+			{
+				"key": "items",
+				"label": "Einträge",
+				"type": "repeater",
+				"add": "Eintrag hinzufügen",
+				"fields": [
+					{
+						"key": "group",
+						"label": "Zwischentitel davor (optional)",
+						"type": "text"
+					},
+					{
+						"key": "title",
+						"label": "Name",
+						"type": "text"
+					},
+					{
+						"key": "pax",
+						"label": "Zusatz rechts (z. B. «ab 6 Pers.»)",
+						"type": "text"
+					},
+					{
+						"key": "text",
+						"label": "Beschreibung",
+						"type": "textarea"
+					}
+				]
+			},
+			{
+				"key": "button_text",
+				"label": "Knopf: Text",
+				"type": "text"
+			},
+			{
+				"key": "button_angebot",
+				"label": "Knopf: führt zur Anfrage mit",
+				"type": "angebot",
+				"help": "Wählt im Anfrageformular das Angebot vor."
+			},
+			{
+				"key": "button_link",
+				"label": "Knopf: eigener Link (statt Anfrage)",
+				"type": "url"
+			}
+		],
+		"container": false,
+		"allowed": null,
+		"innerLabel": "",
+		"preview": "render"
+	}
+}

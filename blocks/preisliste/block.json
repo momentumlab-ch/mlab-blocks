@@ -1,0 +1,83 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mlab-blocks/preisliste",
+	"title": "Preisliste",
+	"category": "mlab-blocks",
+	"icon": "money-alt",
+	"description": "Mietliste mit Preisen. Besucher wählen Artikel mit + für die Anfrage.",
+	"textdomain": "mlab-blocks",
+	"attributes": {
+		"items": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object"
+			}
+		},
+		"columns": {
+			"type": "string",
+			"default": "2"
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": true
+	},
+	"editorScript": "mlab-blocks-editor",
+	"editorStyle": "mlab-blocks-editor",
+	"render": "file:./render.php",
+	"mlab": {
+		"fields": [
+			{
+				"key": "items",
+				"label": "Artikel",
+				"type": "repeater",
+				"add": "Artikel hinzufügen",
+				"fields": [
+					{
+						"key": "title",
+						"label": "Name",
+						"type": "text"
+					},
+					{
+						"key": "text",
+						"label": "Beschreibung",
+						"type": "text"
+					},
+					{
+						"key": "price",
+						"label": "Preis (z. B. «CHF 150.–» oder «auf Anfrage»)",
+						"type": "text"
+					},
+					{
+						"key": "note",
+						"label": "Preis-Zusatz",
+						"type": "text",
+						"help": "Immer mit «pro Tag», «erster Tag», «pro Person» oder «gesamt»."
+					}
+				]
+			},
+			{
+				"key": "columns",
+				"label": "Spalten am Computer",
+				"type": "select",
+				"default": "2",
+				"options": [
+					[
+						"2",
+						"2"
+					],
+					[
+						"3",
+						"3"
+					]
+				]
+			}
+		],
+		"container": false,
+		"allowed": null,
+		"innerLabel": "",
+		"preview": "render"
+	}
+}

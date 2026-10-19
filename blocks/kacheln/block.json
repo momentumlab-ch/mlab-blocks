@@ -1,0 +1,77 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mlab-blocks/kacheln",
+	"title": "Kachelraster",
+	"category": "mlab-blocks",
+	"icon": "grid-view",
+	"description": "Verlinkte Kacheln wie auf der Startseite.",
+	"textdomain": "mlab-blocks",
+	"attributes": {
+		"items": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object"
+			}
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": true
+	},
+	"editorScript": "mlab-blocks-editor",
+	"editorStyle": "mlab-blocks-editor",
+	"render": "file:./render.php",
+	"mlab": {
+		"fields": [
+			{
+				"key": "items",
+				"label": "Kacheln",
+				"type": "repeater",
+				"add": "Kachel hinzufügen",
+				"fields": [
+					{
+						"key": "title",
+						"label": "Titel",
+						"type": "text"
+					},
+					{
+						"key": "bold",
+						"label": "Fetter Hinweis (z. B. «ab CHF 150.–»)",
+						"type": "text"
+					},
+					{
+						"key": "text",
+						"label": "Text",
+						"type": "text"
+					},
+					{
+						"key": "link",
+						"label": "Link",
+						"type": "url"
+					},
+					{
+						"key": "badge",
+						"label": "Hinweis oben (optional)",
+						"type": "text"
+					},
+					{
+						"key": "image",
+						"label": "Bild (optional)",
+						"type": "image"
+					},
+					{
+						"key": "wide",
+						"label": "Doppelt breit",
+						"type": "toggle"
+					}
+				]
+			}
+		],
+		"container": false,
+		"allowed": null,
+		"innerLabel": "",
+		"preview": "render"
+	}
+}

@@ -1,0 +1,111 @@
+/* MomentumLab Blocks: Formular und Vorschau im Editor. */
+.mlab-b-form {
+	padding: 16px;
+	border: 2px solid #f08a4b;
+	border-radius: 12px;
+	background: #fff;
+	color: #1e1e1e;
+	font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	display: grid;
+	gap: 14px;
+}
+
+.mlab-b-formtitle {
+	font-weight: 700;
+	font-size: 16px;
+}
+
+.mlab-b-form input,
+.mlab-b-form textarea,
+.mlab-b-form select {
+	font-size: 16px !important;
+	min-height: 44px;
+}
+
+.mlab-b-label {
+	display: block;
+	margin-bottom: 6px;
+	font-size: 11px;
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+.mlab-b-image img {
+	display: block;
+	max-width: 160px;
+	max-height: 110px;
+	margin-bottom: 8px;
+	border-radius: 8px;
+	object-fit: cover;
+}
+
+.mlab-b-imagebuttons,
+.mlab-b-rowtools {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: center;
+}
+
+.mlab-b-listrow {
+	display: flex;
+	gap: 6px;
+	align-items: center;
+	margin-bottom: 6px;
+}
+
+.mlab-b-listrow > :first-child {
+	flex: 1;
+}
+
+.mlab-b-repeater .mlab-b-item {
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	margin-bottom: 8px;
+}
+
+.mlab-b-repeater .mlab-b-item .components-panel__body-toggle {
+	font-size: 14px;
+}
+
+.mlab-b-repeater .mlab-b-item .components-base-control {
+	margin-bottom: 12px;
+}
+
+.mlab-b-hint {
+	margin: 0;
+	font-size: 13px;
+	color: #757575;
+}
+
+.mlab-b-preview {
+	pointer-events: none;
+}
+
+.mlab-b-bar {
+	padding: 10px 14px;
+	border-radius: 8px;
+	background: #f0f0f0;
+	color: #1e1e1e;
+	font: 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.mlab-b-inner {
+	margin: 8px 0 16px;
+	padding: 8px;
+	border: 1px dashed #c3c4c7;
+	border-radius: 8px;
+}
+
+.mlab-b-innerlabel {
+	display: block;
+	margin-bottom: 6px;
+	font: 12px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	color: #757575;
+}
+
+.mlab-b-form .components-panel__body-toggle,
+.mlab-b-form .components-panel__body-title button {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+	font-weight: 600;
+}

@@ -1,0 +1,202 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mlab-blocks/seitenkopf",
+	"title": "Seitenkopf",
+	"category": "mlab-blocks",
+	"icon": "cover-image",
+	"description": "Kopf der Seite mit Titel, Einleitung, Stichworten und Knopf.",
+	"textdomain": "mlab-blocks",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"highlight": {
+			"type": "string",
+			"default": ""
+		},
+		"lead": {
+			"type": "string",
+			"default": ""
+		},
+		"chips": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "string"
+			}
+		},
+		"button_text": {
+			"type": "string",
+			"default": ""
+		},
+		"button_angebot": {
+			"type": "string",
+			"default": ""
+		},
+		"button_link": {
+			"type": "string",
+			"default": ""
+		},
+		"button2_text": {
+			"type": "string",
+			"default": ""
+		},
+		"button2_link": {
+			"type": "string",
+			"default": ""
+		},
+		"badge": {
+			"type": "string",
+			"default": ""
+		},
+		"crumb": {
+			"type": "string",
+			"default": ""
+		},
+		"image": {
+			"type": "object",
+			"default": {}
+		},
+		"preset": {
+			"type": "string",
+			"default": ""
+		},
+		"subtle": {
+			"type": "boolean",
+			"default": false
+		},
+		"dark": {
+			"type": "boolean",
+			"default": false
+		},
+		"season": {
+			"type": "boolean",
+			"default": false
+		},
+		"season_winter": {
+			"type": "string",
+			"default": "Winter"
+		},
+		"season_summer": {
+			"type": "string",
+			"default": "Sommer"
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": true
+	},
+	"editorScript": "mlab-blocks-editor",
+	"editorStyle": "mlab-blocks-editor",
+	"render": "file:./render.php",
+	"mlab": {
+		"fields": [
+			{
+				"key": "title",
+				"label": "Titel",
+				"type": "text"
+			},
+			{
+				"key": "highlight",
+				"label": "Titel, farbiger Teil",
+				"type": "text",
+				"help": "Steht am Ende des Titels in Orange, z. B. «Grindelwald»."
+			},
+			{
+				"key": "lead",
+				"label": "Einleitung",
+				"type": "textarea"
+			},
+			{
+				"key": "chips",
+				"label": "Stichworte",
+				"type": "list",
+				"add": "Stichwort hinzufügen"
+			},
+			{
+				"key": "button_text",
+				"label": "Knopf: Text",
+				"type": "text"
+			},
+			{
+				"key": "button_angebot",
+				"label": "Knopf: führt zur Anfrage mit",
+				"type": "angebot",
+				"help": "Wählt im Anfrageformular das Angebot vor."
+			},
+			{
+				"key": "button_link",
+				"label": "Knopf: eigener Link (statt Anfrage)",
+				"type": "url"
+			},
+			{
+				"key": "button2_text",
+				"label": "Zweiter Knopf: Text",
+				"type": "text"
+			},
+			{
+				"key": "button2_link",
+				"label": "Zweiter Knopf: Link",
+				"type": "url"
+			},
+			{
+				"key": "badge",
+				"label": "Hinweis oben (z. B. «Neu ab Dezember»)",
+				"type": "text"
+			},
+			{
+				"key": "crumb",
+				"label": "Name im Pfad oben",
+				"type": "text",
+				"help": "Leer lassen für den Seitentitel."
+			},
+			{
+				"key": "image",
+				"label": "Hintergrundbild",
+				"type": "image"
+			},
+			{
+				"key": "preset",
+				"label": "oder Bild aus dem Design",
+				"type": "preset"
+			},
+			{
+				"key": "subtle",
+				"label": "Bild dezenter zeigen",
+				"type": "toggle"
+			},
+			{
+				"key": "dark",
+				"label": "Dunkler Kopf ohne Equalizer (z. B. mit Formular)",
+				"type": "toggle"
+			},
+			{
+				"key": "season",
+				"label": "Umschalter Winter/Sommer zeigen (Partys)",
+				"type": "toggle"
+			},
+			{
+				"key": "season_winter",
+				"label": "Umschalter: Text Winter",
+				"type": "text",
+				"default": "Winter"
+			},
+			{
+				"key": "season_summer",
+				"label": "Umschalter: Text Sommer",
+				"type": "text",
+				"default": "Sommer"
+			}
+		],
+		"container": true,
+		"allowed": [
+			"core/shortcode",
+			"core/paragraph",
+			"core/html"
+		],
+		"innerLabel": "Zusätzlich im Seitenkopf, z. B. ein Formular",
+		"preview": "render"
+	}
+}

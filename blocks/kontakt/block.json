@@ -1,0 +1,57 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mlab-blocks/kontakt",
+	"title": "Kontakt",
+	"category": "mlab-blocks",
+	"icon": "phone",
+	"description": "Kontaktangaben als Karten.",
+	"textdomain": "mlab-blocks",
+	"attributes": {
+		"items": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object"
+			}
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": true
+	},
+	"editorScript": "mlab-blocks-editor",
+	"editorStyle": "mlab-blocks-editor",
+	"render": "file:./render.php",
+	"mlab": {
+		"fields": [
+			{
+				"key": "items",
+				"label": "Angaben",
+				"type": "repeater",
+				"add": "Angabe hinzufügen",
+				"fields": [
+					{
+						"key": "label",
+						"label": "Bezeichnung (z. B. «E-Mail»)",
+						"type": "text"
+					},
+					{
+						"key": "value",
+						"label": "Wert",
+						"type": "text"
+					},
+					{
+						"key": "link",
+						"label": "Link (mailto:, tel: oder Adresse)",
+						"type": "url"
+					}
+				]
+			}
+		],
+		"container": false,
+		"allowed": null,
+		"innerLabel": "",
+		"preview": "render"
+	}
+}
