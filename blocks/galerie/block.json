@@ -1,0 +1,97 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mlab-blocks/galerie",
+	"title": "Galerie",
+	"category": "mlab-blocks",
+	"icon": "format-gallery",
+	"description": "Fotos, die sich gross ansehen lassen.",
+	"textdomain": "mlab-blocks",
+	"attributes": {
+		"items": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object"
+			}
+		},
+		"style": {
+			"type": "string",
+			"default": "galerie"
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": true
+	},
+	"editorScript": "mlab-blocks-editor",
+	"editorStyle": "mlab-blocks-editor",
+	"render": "file:./render.php",
+	"mlab": {
+		"fields": [
+			{
+				"key": "items",
+				"label": "Fotos",
+				"type": "repeater",
+				"add": "Foto hinzufügen",
+				"fields": [
+					{
+						"key": "image",
+						"label": "Foto",
+						"type": "image"
+					},
+					{
+						"key": "preset",
+						"label": "oder Bild aus dem Design",
+						"type": "preset"
+					},
+					{
+						"key": "alt",
+						"label": "Beschreibung",
+						"type": "text"
+					},
+					{
+						"key": "format",
+						"label": "Format",
+						"type": "select",
+						"default": "normal",
+						"options": [
+							[
+								"normal",
+								"Normal"
+							],
+							[
+								"hoch",
+								"Hoch"
+							],
+							[
+								"breit",
+								"Breit"
+							]
+						]
+					}
+				]
+			},
+			{
+				"key": "style",
+				"label": "Darstellung",
+				"type": "select",
+				"default": "galerie",
+				"options": [
+					[
+						"galerie",
+						"Galerie zum Vergrössern"
+					],
+					[
+						"streifen",
+						"Bildstreifen"
+					]
+				]
+			}
+		],
+		"container": false,
+		"allowed": null,
+		"innerLabel": "",
+		"preview": "render"
+	}
+}

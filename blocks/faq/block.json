@@ -1,0 +1,52 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mlab-blocks/faq",
+	"title": "Häufige Fragen",
+	"category": "mlab-blocks",
+	"icon": "editor-help",
+	"description": "Fragen und Antworten zum Aufklappen.",
+	"textdomain": "mlab-blocks",
+	"attributes": {
+		"items": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object"
+			}
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": true
+	},
+	"editorScript": "mlab-blocks-editor",
+	"editorStyle": "mlab-blocks-editor",
+	"render": "file:./render.php",
+	"mlab": {
+		"fields": [
+			{
+				"key": "items",
+				"label": "Fragen",
+				"type": "repeater",
+				"add": "Frage hinzufügen",
+				"fields": [
+					{
+						"key": "question",
+						"label": "Frage",
+						"type": "text"
+					},
+					{
+						"key": "answer",
+						"label": "Antwort",
+						"type": "textarea"
+					}
+				]
+			}
+		],
+		"container": false,
+		"allowed": null,
+		"innerLabel": "",
+		"preview": "render"
+	}
+}

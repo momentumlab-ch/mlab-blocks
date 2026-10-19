@@ -1,0 +1,82 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mlab-blocks/links",
+	"title": "Passende Links",
+	"category": "mlab-blocks",
+	"icon": "admin-links",
+	"description": "Links zu verwandten Seiten.",
+	"textdomain": "mlab-blocks",
+	"attributes": {
+		"kicker": {
+			"type": "string",
+			"default": "Passt dazu"
+		},
+		"items": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object"
+			}
+		},
+		"spacing": {
+			"type": "string",
+			"default": "gross"
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": true
+	},
+	"editorScript": "mlab-blocks-editor",
+	"editorStyle": "mlab-blocks-editor",
+	"render": "file:./render.php",
+	"mlab": {
+		"fields": [
+			{
+				"key": "kicker",
+				"label": "Kleine Überschrift",
+				"type": "text",
+				"default": "Passt dazu"
+			},
+			{
+				"key": "items",
+				"label": "Links",
+				"type": "repeater",
+				"add": "Link hinzufügen",
+				"fields": [
+					{
+						"key": "text",
+						"label": "Text",
+						"type": "text"
+					},
+					{
+						"key": "url",
+						"label": "Link",
+						"type": "url"
+					}
+				]
+			},
+			{
+				"key": "spacing",
+				"label": "Abstand oben",
+				"type": "select",
+				"default": "gross",
+				"options": [
+					[
+						"gross",
+						"Gross"
+					],
+					[
+						"klein",
+						"Klein"
+					]
+				]
+			}
+		],
+		"container": false,
+		"allowed": null,
+		"innerLabel": "",
+		"preview": "render"
+	}
+}

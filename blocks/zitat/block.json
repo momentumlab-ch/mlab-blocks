@@ -1,0 +1,63 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mlab-blocks/zitat",
+	"title": "Kundenstimme",
+	"category": "mlab-blocks",
+	"icon": "format-quote",
+	"description": "Zitat einer Kundin oder eines Kunden.",
+	"textdomain": "mlab-blocks",
+	"attributes": {
+		"quote": {
+			"type": "string",
+			"default": ""
+		},
+		"name": {
+			"type": "string",
+			"default": ""
+		},
+		"detail": {
+			"type": "string",
+			"default": ""
+		},
+		"image": {
+			"type": "object",
+			"default": {}
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": true
+	},
+	"editorScript": "mlab-blocks-editor",
+	"editorStyle": "mlab-blocks-editor",
+	"render": "file:./render.php",
+	"mlab": {
+		"fields": [
+			{
+				"key": "quote",
+				"label": "Zitat",
+				"type": "textarea"
+			},
+			{
+				"key": "name",
+				"label": "Name",
+				"type": "text"
+			},
+			{
+				"key": "detail",
+				"label": "Anlass (z. B. «Hochzeit, Juni 2026»)",
+				"type": "text"
+			},
+			{
+				"key": "image",
+				"label": "Foto (optional)",
+				"type": "image"
+			}
+		],
+		"container": false,
+		"allowed": null,
+		"innerLabel": "",
+		"preview": "render"
+	}
+}

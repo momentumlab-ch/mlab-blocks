@@ -1,0 +1,121 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mlab-blocks/abschnitt",
+	"title": "Abschnitt",
+	"category": "mlab-blocks",
+	"icon": "align-wide",
+	"description": "Rahmen für Inhalte: hell, dunkel oder farbig, mit optionalem Titel.",
+	"textdomain": "mlab-blocks",
+	"attributes": {
+		"kicker": {
+			"type": "string",
+			"default": ""
+		},
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"text": {
+			"type": "string",
+			"default": ""
+		},
+		"background": {
+			"type": "string",
+			"default": "hell"
+		},
+		"layout": {
+			"type": "string",
+			"default": "normal"
+		},
+		"no_top": {
+			"type": "boolean",
+			"default": false
+		},
+		"anchor_id": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": true
+	},
+	"editorScript": "mlab-blocks-editor",
+	"editorStyle": "mlab-blocks-editor",
+	"render": "file:./render.php",
+	"mlab": {
+		"fields": [
+			{
+				"key": "kicker",
+				"label": "Kleine Überschrift (oben)",
+				"type": "text"
+			},
+			{
+				"key": "title",
+				"label": "Titel",
+				"type": "text"
+			},
+			{
+				"key": "text",
+				"label": "Text unter dem Titel",
+				"type": "textarea"
+			},
+			{
+				"key": "background",
+				"label": "Hintergrund",
+				"type": "select",
+				"default": "hell",
+				"options": [
+					[
+						"hell",
+						"Hell"
+					],
+					[
+						"dunkel",
+						"Dunkel"
+					],
+					[
+						"band",
+						"Farbig (Orange)"
+					]
+				]
+			},
+			{
+				"key": "layout",
+				"label": "Anordnung",
+				"type": "select",
+				"default": "normal",
+				"options": [
+					[
+						"normal",
+						"Normal"
+					],
+					[
+						"artikel",
+						"Schmale Textspalte"
+					],
+					[
+						"zweispaltig",
+						"Zwei Spalten"
+					]
+				]
+			},
+			{
+				"key": "no_top",
+				"label": "Ohne Abstand oben",
+				"type": "toggle"
+			},
+			{
+				"key": "anchor_id",
+				"label": "Sprungmarke (z. B. mietliste)",
+				"type": "text",
+				"help": "Damit ein Link wie #mietliste hierher springt."
+			}
+		],
+		"container": true,
+		"allowed": null,
+		"innerLabel": "Inhalt des Abschnitts",
+		"preview": "bar"
+	}
+}

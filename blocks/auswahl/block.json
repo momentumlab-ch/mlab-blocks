@@ -1,0 +1,50 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mlab-blocks/auswahl",
+	"title": "Auswahl-Chips",
+	"category": "mlab-blocks",
+	"icon": "tag",
+	"description": "Anlässe zum Antippen. Die Auswahl landet im Anfrageformular.",
+	"textdomain": "mlab-blocks",
+	"attributes": {
+		"items": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "string"
+			}
+		},
+		"label": {
+			"type": "string",
+			"default": "Typische Anlässe"
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": true
+	},
+	"editorScript": "mlab-blocks-editor",
+	"editorStyle": "mlab-blocks-editor",
+	"render": "file:./render.php",
+	"mlab": {
+		"fields": [
+			{
+				"key": "items",
+				"label": "Anlässe",
+				"type": "list",
+				"add": "Anlass hinzufügen"
+			},
+			{
+				"key": "label",
+				"label": "Beschreibung für Screenreader",
+				"type": "text",
+				"default": "Typische Anlässe"
+			}
+		],
+		"container": false,
+		"allowed": null,
+		"innerLabel": "",
+		"preview": "render"
+	}
+}

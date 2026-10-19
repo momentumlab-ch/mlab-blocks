@@ -1,0 +1,107 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mlab-blocks/text-bild",
+	"title": "Text mit Bild",
+	"category": "mlab-blocks",
+	"icon": "align-pull-left",
+	"description": "Überschrift, Text, Stichpunkte und ein Bild.",
+	"textdomain": "mlab-blocks",
+	"attributes": {
+		"kicker": {
+			"type": "string",
+			"default": ""
+		},
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"points": {
+			"type": "array",
+			"default": [],
+			"items": {
+				"type": "object"
+			}
+		},
+		"text": {
+			"type": "string",
+			"default": ""
+		},
+		"image": {
+			"type": "object",
+			"default": {}
+		},
+		"preset": {
+			"type": "string",
+			"default": ""
+		},
+		"alt": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": true
+	},
+	"editorScript": "mlab-blocks-editor",
+	"editorStyle": "mlab-blocks-editor",
+	"render": "file:./render.php",
+	"mlab": {
+		"fields": [
+			{
+				"key": "kicker",
+				"label": "Kleine Überschrift (oben)",
+				"type": "text"
+			},
+			{
+				"key": "title",
+				"label": "Titel",
+				"type": "text"
+			},
+			{
+				"key": "points",
+				"label": "Stichpunkte",
+				"type": "repeater",
+				"add": "Stichpunkt hinzufügen",
+				"fields": [
+					{
+						"key": "title",
+						"label": "Fett",
+						"type": "text"
+					},
+					{
+						"key": "text",
+						"label": "Text",
+						"type": "text"
+					}
+				]
+			},
+			{
+				"key": "text",
+				"label": "Text",
+				"type": "textarea",
+				"help": "Leerzeile = neuer Absatz."
+			},
+			{
+				"key": "image",
+				"label": "Bild",
+				"type": "image"
+			},
+			{
+				"key": "preset",
+				"label": "oder Bild aus dem Design",
+				"type": "preset"
+			},
+			{
+				"key": "alt",
+				"label": "Bildbeschreibung (für Google und Screenreader)",
+				"type": "text"
+			}
+		],
+		"container": false,
+		"allowed": null,
+		"innerLabel": "",
+		"preview": "render"
+	}
+}
