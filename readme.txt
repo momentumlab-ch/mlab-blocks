@@ -4,7 +4,7 @@ Tags: blocks, page builder
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -36,6 +36,9 @@ Filter:
 Updates kommen aus den GitHub-Releases von momentumlab-ch/mlab-blocks.
 
 == Changelog ==
+
+= 1.1.0 =
+* Häufige Fragen: Die Fragen erscheinen für Google als FAQ (strukturierte Daten FAQPage), wenn MomentumLab SEO aktiv ist.
 
 = 1.0.0 =
 * Erste Version mit 16 Blöcken.
