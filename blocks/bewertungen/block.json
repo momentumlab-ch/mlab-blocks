@@ -1,0 +1,104 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mlab-blocks/bewertungen",
+	"title": "Google-Bewertungen",
+	"category": "mlab-blocks",
+	"icon": "star-filled",
+	"description": "Die neuesten Google-Bewertungen mit Sternen. Braucht das verbundene Google-Unternehmensprofil (MomentumLab Insights).",
+	"textdomain": "mlab-blocks",
+	"attributes": {
+		"kicker": {
+			"type": "string",
+			"default": "Das sagen unsere Gäste"
+		},
+		"title": {
+			"type": "string",
+			"default": ""
+		},
+		"count": {
+			"type": "string",
+			"default": "3"
+		},
+		"min_rating": {
+			"type": "string",
+			"default": "4"
+		},
+		"with_text": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": true
+	},
+	"editorScript": "mlab-blocks-editor",
+	"editorStyle": "mlab-blocks-editor",
+	"render": "file:./render.php",
+	"mlab": {
+		"fields": [
+			{
+				"key": "kicker",
+				"label": "Kleine Überschrift",
+				"type": "text",
+				"default": "Das sagen unsere Gäste"
+			},
+			{
+				"key": "title",
+				"label": "Titel",
+				"type": "text"
+			},
+			{
+				"key": "count",
+				"label": "Anzahl Bewertungen",
+				"type": "select",
+				"default": "3",
+				"options": [
+					[
+						"3",
+						"3"
+					],
+					[
+						"6",
+						"6"
+					],
+					[
+						"9",
+						"9"
+					]
+				]
+			},
+			{
+				"key": "min_rating",
+				"label": "Nur ab",
+				"type": "select",
+				"default": "4",
+				"options": [
+					[
+						"5",
+						"5 Sternen"
+					],
+					[
+						"4",
+						"4 Sternen"
+					],
+					[
+						"1",
+						"allen Bewertungen"
+					]
+				]
+			},
+			{
+				"key": "with_text",
+				"label": "Nur Bewertungen mit Text",
+				"type": "toggle",
+				"default": true
+			}
+		],
+		"container": false,
+		"allowed": null,
+		"innerLabel": "",
+		"preview": "render"
+	}
+}

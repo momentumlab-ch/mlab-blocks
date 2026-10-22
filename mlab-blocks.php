@@ -3,7 +3,7 @@
  * Plugin Name:       MomentumLab Blocks
  * Plugin URI:        https://github.com/momentumlab-ch/mlab-blocks
  * Description:       Seiten mit Blöcken pflegen: Seitenkopf, Abschnitte, Preisliste, Galerie, Fragen und mehr. Felder für Bild, Titel, Text und Knopf, das Aussehen kommt aus dem Theme.
- * Version:           1.1.0
+ * Version:           1.2.0
  * Requires at least: 6.5
  * Requires PHP:      8.0
  * Author:            MomentumLab
@@ -19,7 +19,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'MLAB_BLOCKS_VERSION', '1.1.0' );
+define( 'MLAB_BLOCKS_VERSION', '1.2.0' );
 define( 'MLAB_BLOCKS_FILE', __FILE__ );
 define( 'MLAB_BLOCKS_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MLAB_BLOCKS_URL', plugin_dir_url( __FILE__ ) );
