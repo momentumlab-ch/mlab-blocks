@@ -437,3 +437,60 @@ function mlab_blocks_render_knoepfe( array $a ): string {
 
 	return '' !== $buttons ? '<div class="cta-row">' . $buttons . '</div>' : '';
 }
+
+/**
+ * Sterne als Text und für Screenreader.
+ *
+ * @param float $rating Bewertung 1 bis 5.
+ */
+function mlab_blocks_stars( float $rating ): string {
+	$full = (int) round( max( 0, min( 5, $rating ) ) );
+	/* translators: %s: Bewertung, z. B. 4,8 */
+	$label = sprintf( __( '%s von 5 Sternen', 'mlab-blocks' ), number_format_i18n( $rating, 1 ) );
+
+	return '<span class="stars" role="img" aria-label="' . esc_attr( $label ) . '">' . str_repeat( '★', $full ) . str_repeat( '☆', 5 - $full ) . '</span>';
+}
+
+/**
+ * Google-Bewertungen. Die Daten liefert ein anderes Plugin über den Filter «mlab_blocks_reviews»
+ * (MomentumLab Insights mit verbundenem Google-Unternehmensprofil). Ohne Daten bleibt der Block für Besucher leer.
+ *
+ * Erwartet: array( 'rating' => 4.8, 'count' => 37, 'url' => 'https://…', 'reviews' => array( array( 'name', 'rating', 'text', 'time' ) ) ).
+ *
+ * @param array<string, mixed> $a Attribute.
+ */
+function mlab_blocks_render_bewertungen( array $a ): string {
+	$data    = (array) apply_filters( 'mlab_blocks_reviews', array() );
+	$min     = max( 1, (int) mlab_blocks_str( $a, 'min_rating' ) );
+	$limit   = max( 1, min( 9, (int) mlab_blocks_str( $a, 'count' ) ) );
+	$text    = ! array_key_exists( 'with_text', $a ) || ! empty( $a['with_text'] );
+	$reviews = array_filter(
+		(array) ( $data['reviews'] ?? array() ),
+		static fn( $r ) => is_array( $r ) && (int) ( $r['rating'] ?? 0 ) >= $min && ( ! $text || '' !== trim( (string) ( $r['text'] ?? '' ) ) )
+	);
+	$reviews = array_slice( array_values( $reviews ), 0, $limit );
+	if ( ! $reviews ) {
+		return current_user_can( 'edit_posts' ) && ( defined( 'REST_REQUEST' ) && REST_REQUEST )
+			? '<p class="mlab-blocks-hint">' . esc_html__( 'Noch keine Google-Bewertungen. Sie erscheinen, sobald das Google-Unternehmensprofil in MomentumLab Insights verbunden ist. Besucher sehen bis dahin nichts.', 'mlab-blocks' ) . '</p>'
+			: '';
+	}
+
+	$head = mlab_blocks_sec_head( mlab_blocks_str( $a, 'kicker' ), mlab_blocks_str( $a, 'title' ), '' );
+	$html = '<div class="reviews">';
+	if ( ! empty( $data['rating'] ) ) {
+		/* translators: 1: Durchschnitt, 2: Anzahl Bewertungen */
+		$html .= '<p class="reviews-sum">' . mlab_blocks_stars( (float) $data['rating'] ) . ' ' . esc_html( sprintf( __( '%1$s von 5 aus %2$s Google-Bewertungen', 'mlab-blocks' ), number_format_i18n( (float) $data['rating'], 1 ), number_format_i18n( (int) ( $data['count'] ?? 0 ) ) ) ) . '</p>';
+	}
+	$html .= '<div class="reviews-grid">';
+	foreach ( $reviews as $r ) {
+		$time  = (int) ( $r['time'] ?? 0 );
+		$html .= '<figure class="quote-card">' . mlab_blocks_stars( (float) $r['rating'] ) . '<blockquote>' . mlab_blocks_paragraphs( wp_trim_words( (string) ( $r['text'] ?? '' ), 60, '…' ) ) . '</blockquote>'
+			. '<figcaption><b>' . esc_html( (string) ( $r['name'] ?? '' ) ) . '</b>' . ( $time ? '<span>' . esc_html( wp_date( 'F Y', $time ) ) . '</span>' : '' ) . '</figcaption></figure>';
+	}
+	$html .= '</div>';
+	if ( ! empty( $data['url'] ) ) {
+		$html .= '<p class="reviews-more"><a href="' . esc_url( (string) $data['url'] ) . '" target="_blank" rel="noopener">' . esc_html__( 'Alle Bewertungen auf Google', 'mlab-blocks' ) . '</a></p>';
+	}
+
+	return $head . $html . '</div>';
+}
